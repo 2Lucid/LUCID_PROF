@@ -1,0 +1,5 @@
+2026-02-02T21:04:38.999Z - [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent: [429 Too Many Requests] Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.
+{
+  "status": 429,
+  "statusText": "Too Many Requests"
+}

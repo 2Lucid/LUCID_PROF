@@ -1,26 +1,90 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@plugin "tailwindcss-animate";
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@custom-variant dark (&:where(.dark, .dark *));
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@media print {
+
+  /* Hide UI elements */
+  aside,
+  header,
+  nav,
+  .no-print,
+  button:not(.print-visible) {
+    display: none !important;
+  }
+
+  /* Reset background and colors for paper */
+  body,
+  main,
+  div {
+    background-color: white !important;
+    color: black !important;
+    overflow: visible !important;
+  }
+
+  /* Typography adjustments for print */
+  h1,
+  h2,
+  h3,
+  p,
+  li {
+    color: black !important;
+  }
+
+  /* Layout adjustments */
+  main {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  /* Avoid breaking questions/blocks across pages */
+  .print-break-avoid {
+    break-inside: avoid;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@theme {
+  /* Premium Dark Palette */
+  --color-background: #0f0718;
+  --color-foreground: #fafafa;
+  /* Light text for contrast */
+
+  /* Surface Colors */
+  --color-surface: #1a0f2e;
+  --color-surface-hover: #2e1d40;
+
+  /* Brand Accents */
+  --color-primary: #8B5CF6;
+  /* Violet */
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #06b6d4;
+  /* Cyan */
+  --color-accent: #c084fc;
+
+
+  /* Utility Colors */
+  --color-success: #10b981;
+  --color-danger: #ef4444;
+  --color-warning: #f59e0b;
+}
+
+/* Custom Base Styles */
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Glassmorphism Utilities */
+@utility glass {
+  @apply bg-white/5 backdrop-blur-lg border border-white/10;
+}
+
+@utility glass-card {
+  @apply glass rounded-xl shadow-lg hover:bg-white/10 transition-colors duration-300;
 }
