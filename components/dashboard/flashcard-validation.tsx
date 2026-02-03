@@ -78,7 +78,7 @@ export function FlashcardValidation({ item, onValidate }: FlashcardValidationPro
                 </button>
 
                 <div className="flex gap-1">
-                    {cards.slice(0, 10).map((_, idx) => (
+                    {cards.slice(0, 10).map((_: any, idx: number) => (
                         <button
                             key={idx}
                             onClick={() => { setCurrentIndex(idx); setIsFlipped(false); }}
